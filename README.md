@@ -1,69 +1,65 @@
-# React + TypeScript + Vite
+# Anime.js React Vite Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple, visually appealing demo for explaining the basics of [anime.js](https://animejs.com/) in a React + TypeScript + Vite environment. It is designed for clarity and minimalism, making it perfect for educational content such as YouTube tutorials.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Live Animations:** Demonstrates anime.js features including text, SVG, and shape animations.
+- **Draggable Elements:** Interactive drag-and-drop using anime.js utilities.
+- **Circle Position Tracking:** Shows real-time position updates for a moving circle.
+- **Reusable Styles:** Includes reusable CSS classes for shapes (circle, square) to keep code clean and DRY.
+- **Responsive & Modern UI:** Uses Tailwind CSS utility classes for layout and style.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v16+ recommended)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/animejs-react-vite-demo.git
+   cd animejs-react-vite-demo
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `src/App.tsx` — Main React component with all demo logic and UI.
+- `src/App.css` — Custom styles including reusable `.circle` and `.square` classes.
+- `public/` — Static assets.
+- `vite.config.ts` — Vite configuration.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Customization
+
+- You can easily add more shapes or animations by using the `.circle` and `.square` classes in your JSX and updating the anime.js logic in `App.tsx`.
+- Tailwind utility classes are used for rapid styling and layout.
+
+## Why This Project?
+
+- **Minimal & Clear:** Focuses on the essentials for teaching anime.js.
+- **Easy to Extend:** Add more demos or styles as needed.
+- **Ready for YouTube:** Clean code and UI for screen recording and explanation.
+
+## License
+
+MIT
+
+---
+
+Made with ❤️ for learning and sharing anime.js!

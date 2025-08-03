@@ -209,15 +209,15 @@ function App() {
       </div>
       <div className="h-screen my-auto">
         <div className="relative w-20 h-20 border border-amber-300 flex items-center justify-center">
-          <div className="animation1 absolute w-2 h-2 rounded-xs bg-yellow-200" />
-          <div className="animation2 absolute w-4 h-4 rounded-xs bg-transparent border border-yellow-200" />
-          <div className="animation3 absolute w-3 h-3 rounded-xs bg-yellow-200" />
-          <div className="animation4 absolute w-2 h-2 rounded-xs bg-yellow-200" />
+          <div className="animation1 absolute w-2 h-2 square bg-yellow-200" />
+          <div className="animation2 absolute w-4 h-4 square bg-transparent border border-yellow-200" />
+          <div className="animation3 absolute w-3 h-3 square bg-yellow-200" />
+          <div className="animation4 absolute w-2 h-2 square bg-yellow-200" />
         </div>
       </div>
       <div className="h-screen my-auto">
         <div className="grid w-20 h-20 border border-amber-300">
-          <div className="drag w-2 h-2 rounded-xs bg-yellow-200" />
+          <div className="drag w-2 h-2 square bg-yellow-200" />
         </div>
       </div>
       <div className="h-screen my-auto">
@@ -226,10 +226,10 @@ function App() {
             ref={demoRef}
             className="flex items-center justify-center relative"
           >
-            <div className="circle bg-amber-200 w-2 h-2 rounded-full"></div>
+            <div className="circle bg-amber-200 w-6 h-6"></div>
           </div>
-          <div>
-            <p>Circle Position</p>
+          <div className="mt-2 text-xs text-amber-900">
+            <p className="font-semibold">Circle Position</p>
             <p>
               X: <span ref={xRef}>0</span>
             </p>

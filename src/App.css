@@ -18,6 +18,19 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Reusable shape styles */
+.circle {
+  border-radius: 50%;
+  display: inline-block;
+}
+.square {
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+.rounded-xs {
+  border-radius: 0.25rem;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
