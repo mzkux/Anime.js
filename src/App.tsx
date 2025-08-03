@@ -25,13 +25,23 @@ function App() {
   const demoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (
+      !scrollRef.current ||
+      !timeRef.current ||
+      !xRef.current ||
+      !yRef.current ||
+      !demoRef.current
+    ) {
+      return;
+    }
+
     const { chars } = text.split(".text", {
       chars: { wrap: "clip" },
     });
 
     animate(chars, {
       y: [{ to: ["100%", "0%"] }, { to: "-100%", delay: 750, ease: "in(3)" }],
-      duration: 750,
+      duration: 1000,
       ease: "out(3)",
       delay: stagger(50),
       loop: true,
@@ -46,6 +56,7 @@ function App() {
     });
 
     createTimer({
+      delay: 500,
       onUpdate: (self: any) => {
         if (timeRef.current) {
           timeRef.current.innerHTML = self.iterationCurrentTime;
@@ -59,6 +70,7 @@ function App() {
     });
 
     animate(".animation1", {
+      delay: 500,
       x: () => random(-30, 30),
       y: () => random(-30, 30),
       rotate: () => random(-180, 180),
@@ -70,6 +82,7 @@ function App() {
     });
 
     animate(".animation2", {
+      delay: 500,
       x: () => random(-30, 30),
       y: () => random(-30, 30),
       scale: () => [
@@ -86,6 +99,7 @@ function App() {
     });
 
     animate(".animation3", {
+      delay: 500,
       x: () => random(-30, 30),
       y: () => random(-30, 30),
       borderRadius: () => String(random(0, 100)) + "%",
@@ -130,16 +144,20 @@ function App() {
       circle.y(0);
     };
 
+    scrollRef.current.addEventListener("scroll", () => {
+      console.log("Scroll event fired!");
+    });
+
     demoRef.current!.addEventListener("mousemove", onMouseMove);
     demoRef.current!.addEventListener("mouseleave", onMoiseLeave);
   }, []);
 
   return (
     <div
-      className="flex flex-col items-center overflow-y-auto justify-center bg-gradient-to-br from-amber-50 via-yellow-100 to-amber-200 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900 transition-colors duration-500"
+      className="h-[100vh] overflow-y-auto bg-gradient-to-br from-amber-50 via-yellow-100 to-amber-200 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900 transition-colors duration-500"
       ref={scrollRef}
     >
-      <div className="h-screen my-auto flex flex-col items-center justify-center">
+      <div className="my-auto flex flex-col items-center justify-center">
         <div className="bg-white/80 dark:bg-zinc-900/80 rounded-xl shadow-lg p-8 flex flex-col items-center gap-4 border border-amber-100 dark:border-zinc-700 transition-colors duration-500">
           <p className="text text-amber-700 dark:text-amber-300 text-4xl font-bold drop-shadow-sm">
             Welcome to
@@ -197,7 +215,7 @@ function App() {
           </svg>
         </div>
       </div>
-      <div className="h-screen my-auto flex items-center justify-center">
+      <div className="h-[200vh] my-auto flex items-center justify-center">
         <div className="flex flex-col items-center bg-white/70 dark:bg-zinc-900/70 rounded-xl shadow p-6 border border-amber-100 dark:border-zinc-700 transition-colors duration-500">
           <span className="text-amber-400 dark:text-amber-200 font-medium text-xs uppercase tracking-wider mb-2">
             Current Time
@@ -210,7 +228,7 @@ function App() {
           </span>
         </div>
       </div>
-      <div className="h-screen my-auto flex items-center justify-center">
+      <div className="h-[200vh] my-auto flex items-center justify-center">
         <div className="relative w-28 h-28 border-2 border-amber-300 dark:border-zinc-700 rounded-xl bg-white/60 dark:bg-zinc-900/60 shadow flex items-center justify-center transition-colors duration-500">
           <div className="animation1 absolute w-3 h-3 square bg-yellow-200 dark:bg-amber-400 shadow" />
           <div className="animation2 absolute w-5 h-5 square bg-transparent border-2 border-yellow-200 dark:border-amber-400 shadow" />
@@ -218,12 +236,12 @@ function App() {
           <div className="animation4 absolute w-3 h-3 square bg-yellow-200 dark:bg-amber-400 shadow" />
         </div>
       </div>
-      <div className="h-screen my-auto flex items-center justify-center">
+      <div className="h-[200vh] my-auto flex items-center justify-center">
         <div className="grid w-28 h-28 border-2 border-amber-300 dark:border-zinc-700 rounded-xl bg-white/60 dark:bg-zinc-900/60 shadow place-items-center transition-colors duration-500">
           <div className="drag w-4 h-4 square bg-yellow-200 dark:bg-amber-400 shadow" />
         </div>
       </div>
-      <div className="h-screen my-auto flex items-center justify-center">
+      <div className="h-[200vh] my-auto flex items-center justify-center">
         <div className="flex flex-col items-center bg-white/70 dark:bg-zinc-900/70 rounded-xl shadow p-6 border border-amber-100 dark:border-zinc-700 transition-colors duration-500">
           <div
             ref={demoRef}
