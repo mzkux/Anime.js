@@ -24,17 +24,9 @@ function App() {
   const yRef = useRef<HTMLDivElement>(null);
   const demoRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (
-      !scrollRef.current ||
-      !timeRef.current ||
-      !xRef.current ||
-      !yRef.current ||
-      !demoRef.current
-    ) {
-      return;
-    }
+  console.log("App rendered");
 
+  useEffect(() => {
     const { chars } = text.split(".text", {
       chars: { wrap: "clip" },
     });
@@ -112,8 +104,9 @@ function App() {
     });
 
     createDraggable(".drag", {
-      container: ".grid",
+      container: ".dragContainer",
       releaseDamping: 5,
+      onGrab: (self) => console.log("Grabbed", self.$container),
     });
 
     const circle: any = createAnimatable(".circle", {
@@ -144,12 +137,15 @@ function App() {
       circle.y(0);
     };
 
-    scrollRef.current.addEventListener("scroll", () => {
-      console.log("Scroll event fired!");
-    });
-
     demoRef.current!.addEventListener("mousemove", onMouseMove);
     demoRef.current!.addEventListener("mouseleave", onMoiseLeave);
+
+    return () => {
+      if (demoRef.current) {
+        demoRef.current.removeEventListener("mousemove", onMouseMove);
+        demoRef.current.removeEventListener("mouseleave", onMoiseLeave);
+      }
+    };
   }, []);
 
   return (
@@ -237,7 +233,7 @@ function App() {
         </div>
       </div>
       <div className="h-[200vh] my-auto flex items-center justify-center">
-        <div className="grid w-28 h-28 border-2 border-amber-300 dark:border-zinc-700 rounded-xl bg-white/60 dark:bg-zinc-900/60 shadow place-items-center transition-colors duration-500">
+        <div className="dragContainer w-28 h-28 border-2 border-amber-300 dark:border-zinc-700 rounded-xl bg-white/60 dark:bg-zinc-900/60 shadow transition-colors duration-500">
           <div className="drag w-4 h-4 square bg-yellow-200 dark:bg-amber-400 shadow" />
         </div>
       </div>
