@@ -68,8 +68,8 @@ function App() {
 
     animate(".animation1", {
       delay: 500,
-      x: () => random(-30, 30),
-      y: () => random(-30, 30),
+      x: () => random(-50, 50),
+      y: () => random(-50, 50),
       rotate: () => random(-180, 180),
       duration: random(500, 1000),
       loop: true,
@@ -80,8 +80,8 @@ function App() {
 
     animate(".animation2", {
       delay: 500,
-      x: () => random(-30, 30),
-      y: () => random(-30, 30),
+      x: () => random(-50, 50),
+      y: () => random(-50, 50),
       scale: () => [
         () => random(0.5, 3),
         () => random(0.5, 3),
@@ -97,9 +97,26 @@ function App() {
 
     animate(".animation3", {
       delay: 500,
-      x: () => random(-30, 30),
-      y: () => random(-30, 30),
+      x: () => random(-50, 50),
+      y: () => random(-50, 50),
       borderRadius: () => String(random(0, 100)) + "%",
+      rotate: () => random(-180, 180),
+      duration: random(500, 1000),
+      loop: true,
+      loopDelay: random(0, 500),
+      onLoop: (self) => self.refresh(),
+      autoplay: onScroll({ container: scrollRef.current! }),
+    });
+
+    animate(".animation4", {
+      delay: 500,
+      x: () => random(-50, 50),
+      y: () => random(-50, 50),
+      scale: () => [
+        () => random(0.5, 3),
+        () => random(0.5, 3),
+        () => random(0.5, 3),
+      ],
       rotate: () => random(-180, 180),
       duration: random(500, 1000),
       loop: true,
@@ -111,6 +128,7 @@ function App() {
     createDraggable(".drag", {
       container: ".dragContainer",
       releaseDamping: 5,
+      snap: 200,
       onGrab: (self) => console.log("Grabbed", self.$container),
     });
 
@@ -228,7 +246,7 @@ function App() {
         </div>
       </div>
       <div className="h-[80vh] flex items-center justify-center">
-        <div className="relative w-36 h-36 border-4 border-amber-400 dark:border-zinc-700 rounded-2xl bg-white/70 dark:bg-zinc-900/70 shadow-lg flex items-center justify-center transition-colors duration-700">
+        <div className="relative w-80 h-80 border-4 border-amber-400 dark:border-zinc-700 rounded-2xl bg-white/70 dark:bg-zinc-900/70 shadow-lg flex items-center justify-center transition-colors duration-700">
           <div
             className="animation1 absolute square shadow-lg border-2 border-amber-300"
             style={{
