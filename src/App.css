@@ -5,27 +5,41 @@
   text-align: center;
 }
 
+
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms, box-shadow 300ms;
+  border-radius: 1.5em;
+  box-shadow: 0 4px 24px 0 #fbbf24aa;
+  background: linear-gradient(135deg, #fbbf24 0%, #fde68a 100%);
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #fbbf24cc);
+  box-shadow: 0 8px 32px 0 #fbbf24cc;
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+  box-shadow: 0 8px 32px 0 #61dafbaa;
 }
 
 /* Reusable shape styles */
 .circle {
   border-radius: 50%;
   display: inline-block;
+  min-width: 4rem;
+  min-height: 4rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #fde68a 100%);
+  box-shadow: 0 4px 24px 0 #fbbf2455;
+  border: 3px solid #fbbf24;
 }
 .square {
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   display: inline-block;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  box-shadow: 0 2px 12px 0 #fbbf2455;
 }
 .rounded-xs {
   border-radius: 0.25rem;
@@ -46,12 +60,19 @@
   }
 }
 
+
 .card {
   padding: 2em;
+  border-radius: 1.5em;
+  background: linear-gradient(135deg, #fbbf24 0%, #fde68a 100%);
+  box-shadow: 0 4px 24px 0 #fbbf24aa;
 }
 
+
 .read-the-docs {
-  color: #888;
+  color: #fbbf24;
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
 
