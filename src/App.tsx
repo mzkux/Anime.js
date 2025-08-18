@@ -117,6 +117,11 @@ function App() {
         () => random(0.5, 3),
         () => random(0.5, 3),
       ],
+      skew: () => [
+        () => random(-50, 50),
+        () => random(-50, 50),
+        () => random(-50, 50),
+      ],
       rotate: () => random(-180, 180),
       duration: random(500, 1000),
       loop: true,
@@ -126,10 +131,7 @@ function App() {
     });
 
     createDraggable(".drag", {
-      container: ".dragContainer",
       releaseDamping: 5,
-      snap: 200,
-      onGrab: (self) => console.log("Grabbed", self.$container),
     });
 
     const circle: any = createAnimatable(".circle", {
@@ -245,7 +247,7 @@ function App() {
           </span>
         </div>
       </div>
-      <div className="h-[80vh] flex items-center justify-center">
+      <div className="h-[200vh] flex items-center justify-center">
         <div className="relative w-80 h-80 border-4 border-amber-400 dark:border-zinc-700 rounded-2xl bg-white/70 dark:bg-zinc-900/70 shadow-lg flex items-center justify-center transition-colors duration-700">
           <div
             className="animation1 absolute square shadow-lg border-2 border-amber-300"
@@ -278,7 +280,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="h-[60vh] flex items-center justify-center">
+      <div className="h-[200vh] flex items-center justify-center">
         <div className="dragContainer w-96 h-32 border-4 border-zinc-700 rounded-2xl bg-zinc-900/70 shadow-xl transition-colors duration-700 flex items-center justify-center">
           <div
             className="drag square shadow-lg border-2 border-amber-400"
@@ -289,7 +291,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="h-[60vh] flex items-center justify-center">
+      <div className="h-[200vh] flex items-center justify-center">
         <div className="flex flex-col items-center bg-zinc-900/80 rounded-2xl shadow-2xl p-8 border-2 border-zinc-700 transition-colors duration-700">
           <div
             ref={demoRef}
