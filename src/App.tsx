@@ -131,6 +131,7 @@ function App() {
     });
 
     createDraggable(".drag", {
+      container: ".dragContainer",
       releaseDamping: 5,
     });
 
